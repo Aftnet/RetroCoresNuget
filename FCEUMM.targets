@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PkgPlatform Condition="'$(Platform)' == 'Win32'">x86</PkgPlatform>
+    <PkgPlatform Condition="'$(Platform)' != 'Win32'">$(Platform)</PkgPlatform>
+    <PkgBinPath>$(MSBuildThisFileDirectory)..\..\runtimes\win10-$(PkgPlatform)\native</PkgBinPath>
+  </PropertyGroup>
+
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PreprocessorDefinitions>RETRO_IMPORT_SYMBOLS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)..\..\build\native\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  
+  <ItemDefinitionGroup>
+    <Link>
+      <AdditionalLibraryDirectories>$(PkgBinPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>fceumm_libretro.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  
+  <ItemGroup Label="DLLOutput">
+    <Content Include="$(PkgBinPath)\*.dll">
+      <Link>%(FileName)%(Extension)</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+</Project>

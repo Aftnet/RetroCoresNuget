@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>FCEUMM</id>
+    <version>1.0.0</version>
+    <authors>Alberto</authors>
+    <owners>Alberto</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>FCEUMM Libretro NES Emulator</description>
+    <releaseNotes>Test</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>Native</tags>
+  </metadata>
+  <files>
+    <file src="arm\*.dll" target="runtimes\win10-arm\native" />
+    <file src="arm\*.lib" target="runtimes\win10-arm\native" />
+    <file src="x86\*.dll" target="runtimes\win10-x86\native" />
+    <file src="x86\*.lib" target="runtimes\win10-x86\native" />
+    <file src="x64\*.dll" target="runtimes\win10-x64\native" />
+    <file src="x64\*.lib" target="runtimes\win10-x64\native" />
+    
+    <file src="include\*.h" target="build\native\include" />
+    <file src="FCEUMM.targets" target="build\native"/>
+  </files>
+</package>
