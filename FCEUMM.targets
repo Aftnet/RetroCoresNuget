@@ -3,7 +3,8 @@
   <PropertyGroup>
     <FCEUMMPlatform Condition="'$(Platform)' == 'Win32'">x86</FCEUMMPlatform>
     <FCEUMMPlatform Condition="'$(Platform)' != 'Win32'">$(Platform)</FCEUMMPlatform>
-    <FCEUMMBinPath>$(MSBuildThisFileDirectory)..\..\runtimes\win10-$(FCEUMMPlatform)\native</FCEUMMBinPath>
+    <FCEUMMBinPath Condition="'$(TargetPlatformIdentifier)' == 'UAP'">$(MSBuildThisFileDirectory)..\..\runtimes\win10-$(FCEUMMPlatform)\nativeassets\uap10.0</FCEUMMBinPath>
+    <FCEUMMBinPath Condition="'$(TargetPlatformIdentifier)' != 'UAP'">$(MSBuildThisFileDirectory)..\..\runtimes\win-$(FCEUMMPlatform)\nativeassets\native</FCEUMMBinPath>
   </PropertyGroup>
 
   <ItemDefinitionGroup>
@@ -20,11 +21,23 @@
     </Link>
   </ItemDefinitionGroup>
   
-  <ItemGroup Label="FCEUMM">
-    <PackagingOutputs Include="$(FCEUMMBinPath)\fceumm_libretro.dll">
-      <OutputGroup>FCEUMMBinaries</OutputGroup>
-      <ProjectName>$(ProjectName)</ProjectName>
-      <TargetPath>%(Filename)%(Extension)</TargetPath>
-    </PackagingOutputs>
-  </ItemGroup>
+  <Choose>  
+    <When Condition="'$(TargetPlatformIdentifier)' == 'UAP'">
+      <ItemGroup Label="FCEUMM">
+        <PackagingOutputs Include="$(FCEUMMBinPath)\fceumm_libretro.dll">
+          <OutputGroup>FCEUMMBinaries</OutputGroup>
+          <ProjectName>$(ProjectName)</ProjectName>
+          <TargetPath>%(Filename)%(Extension)</TargetPath>
+        </PackagingOutputs>
+      </ItemGroup>
+    </When>
+    <When Condition="'$(TargetPlatformIdentifier)' != 'UAP'">
+      <ItemGroup Label="FCEUMM">
+        <Content Include="$(FCEUMMBinPath)\*.dll">
+          <Link>%(FileName)%(Extension)</Link>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+      </ItemGroup>
+    </When>
+  </Choose>
 </Project>
