@@ -1,15 +1,19 @@
 <?xml version="1.0"?>
-<package >
-  <metadata>
-    <id>FCEUMM</id>
-    <version>1.0.0</version>
-    <authors>Alberto</authors>
-    <owners>Alberto</owners>
+<package>
+  <metadata minClientVersion="3.5">
+    <id>Aftnet.Test.FCEUMM</id>
+    <title>FCEUMM Libretro</title>
+    <version>0.1.0</version>
+    <authors>Libretro</authors>
+    <owners>Libretro</owners>
+    <projectUrl>https://github.com/libretro/libretro-fceumm</projectUrl>
+    <licenseUrl>https://raw.githubusercontent.com/libretro/libretro-fceumm/master/Copying</licenseUrl>
+    <iconUrl>https://raw.githubusercontent.com/Aftnet/fceumm_nuget/master/Icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>FCEUMM Libretro NES Emulator</description>
-    <releaseNotes>Test</releaseNotes>
+    <description>Libretro NES Emulator</description>
+    <releaseNotes>Experimental nuget package</releaseNotes>
     <copyright>Copyright 2017</copyright>
-    <tags>Native</tags>
+    <tags>Native Libretro NES FCEUMM</tags>
   </metadata>
   <files>
     <file src="uwp_arm\*.dll" target="runtimes\win10-arm\nativeassets\uap10.0" />
