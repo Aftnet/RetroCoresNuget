@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <metadata minClientVersion="3.5">
-    <id>FCEUMM</id>
+    <id>Aftnet.Experimental.FCEUMM</id>
     <title>FCEUMM Libretro</title>
     <version>0.1.0</version>
     <authors>Libretro</authors>
@@ -29,6 +29,6 @@
     <file src="desktop_x86\*.lib" target="runtimes\win-x86\nativeassets\native" />
     
     <file src="include\*.h" target="build\native\include" />
-    <file src="FCEUMM.targets" target="build\native"/>
+    <file src="FCEUMM.targets" target="build\native\Aftnet.Experimental.FCEUMM.targets"/>
   </files>
 </package>
