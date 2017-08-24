@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <metadata minClientVersion="3.5">
-    <id>Aftnet.Test.FCEUMM</id>
+    <id>FCEUMM</id>
     <title>FCEUMM Libretro</title>
     <version>0.1.0</version>
     <authors>Libretro</authors>
