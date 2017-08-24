@@ -12,12 +12,12 @@
     <tags>Native</tags>
   </metadata>
   <files>
-    <file src="arm\*.dll" target="runtimes\win10-arm\native" />
-    <file src="arm\*.lib" target="runtimes\win10-arm\native" />
-    <file src="x86\*.dll" target="runtimes\win10-x86\native" />
-    <file src="x86\*.lib" target="runtimes\win10-x86\native" />
-    <file src="x64\*.dll" target="runtimes\win10-x64\native" />
-    <file src="x64\*.lib" target="runtimes\win10-x64\native" />
+    <file src="uwp_arm\*.dll" target="runtimes\win10-arm\native" />
+    <file src="uwp_arm\*.lib" target="runtimes\win10-arm\native" />
+    <file src="uwp_x86\*.dll" target="runtimes\win10-x86\native" />
+    <file src="uwp_x86\*.lib" target="runtimes\win10-x86\native" />
+    <file src="uwp_x64\*.dll" target="runtimes\win10-x64\native" />
+    <file src="uwp_x64\*.lib" target="runtimes\win10-x64\native" />
     
     <file src="include\*.h" target="build\native\include" />
     <file src="FCEUMM.targets" target="build\native"/>
