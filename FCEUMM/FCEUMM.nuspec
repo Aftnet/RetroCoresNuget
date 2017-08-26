@@ -3,12 +3,12 @@
   <metadata minClientVersion="3.5">
     <id>Aftnet.Experimental.FCEUMM</id>
     <title>FCEUMM Libretro</title>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
     <authors>Libretro</authors>
     <owners>Libretro</owners>
     <projectUrl>https://github.com/libretro/libretro-fceumm</projectUrl>
     <licenseUrl>https://raw.githubusercontent.com/libretro/libretro-fceumm/master/Copying</licenseUrl>
-    <iconUrl>https://raw.githubusercontent.com/Aftnet/fceumm_nuget/master/Icon.png</iconUrl>
+    <iconUrl>https://github.com/Aftnet/RetroCoresNuget/raw/master/Icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Libretro NES Emulator</description>
     <releaseNotes>Experimental nuget package</releaseNotes>
