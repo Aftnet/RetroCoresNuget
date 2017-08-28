@@ -23,7 +23,7 @@
   
   <Choose>  
     <When Condition="'$(TargetPlatformIdentifier)' == 'UAP'">
-      <ItemGroup Label="FCEUMM">
+      <ItemGroup Label="FCEUMMItemGroup">
         <PackagingOutputs Include="$(FCEUMMBinPath)\fceumm_libretro.dll">
           <OutputGroup>FCEUMMBinaries</OutputGroup>
           <ProjectName>$(ProjectName)</ProjectName>
@@ -32,7 +32,7 @@
       </ItemGroup>
     </When>
     <When Condition="'$(TargetPlatformIdentifier)' != 'UAP'">
-      <ItemGroup Label="FCEUMM">
+      <ItemGroup Label="FCEUMMItemGroup">
         <Content Include="$(FCEUMMBinPath)\*.dll">
           <Link>%(FileName)%(Extension)</Link>
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
