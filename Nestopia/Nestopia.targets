@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <NestopiaPlatform Condition="'$(Platform)' == 'Win32'">x86</NestopiaPlatform>
+    <NestopiaPlatform Condition="'$(Platform)' != 'Win32'">$(Platform)</NestopiaPlatform>
+    <NestopiaBinPath Condition="'$(TargetPlatformIdentifier)' == 'UAP'">$(MSBuildThisFileDirectory)..\..\runtimes\win10-$(NestopiaPlatform)\nativeassets\uap10.0</NestopiaBinPath>
+    <NestopiaBinPath Condition="'$(TargetPlatformIdentifier)' != 'UAP'">$(MSBuildThisFileDirectory)..\..\runtimes\win-$(NestopiaPlatform)\nativeassets\native</NestopiaBinPath>
+  </PropertyGroup>
+
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PreprocessorDefinitions>RETRO_IMPORT_SYMBOLS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)..\..\build\native\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  
+  <ItemDefinitionGroup>
+    <Link>
+      <AdditionalLibraryDirectories>$(NestopiaBinPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>nestopia_libretro.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  
+  <Choose>  
+    <When Condition="'$(TargetPlatformIdentifier)' == 'UAP'">
+      <ItemGroup Label="NestopiaItemGroup">
+        <PackagingOutputs Include="$(NestopiaBinPath)\nestopia_libretro.dll">
+          <OutputGroup>NestopiaBinaries</OutputGroup>
+          <ProjectName>$(ProjectName)</ProjectName>
+          <TargetPath>%(Filename)%(Extension)</TargetPath>
+        </PackagingOutputs>
+      </ItemGroup>
+    </When>
+    <When Condition="'$(TargetPlatformIdentifier)' != 'UAP'">
+      <ItemGroup Label="NestopiaItemGroup">
+        <Content Include="$(NestopiaBinPath)\*.dll">
+          <Link>%(FileName)%(Extension)</Link>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+      </ItemGroup>
+    </When>
+  </Choose>
+</Project>
