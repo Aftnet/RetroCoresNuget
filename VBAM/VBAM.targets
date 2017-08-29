@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <VBAMPlatform Condition="'$(Platform)' == 'Win32'">x86</VBAMPlatform>
+    <VBAMPlatform Condition="'$(Platform)' != 'Win32'">$(Platform)</VBAMPlatform>
+    <VBAMBinPath Condition="'$(TargetPlatformIdentifier)' == 'UAP'">$(MSBuildThisFileDirectory)..\..\runtimes\win10-$(VBAMPlatform)\nativeassets\uap10.0</VBAMBinPath>
+    <VBAMBinPath Condition="'$(TargetPlatformIdentifier)' != 'UAP'">$(MSBuildThisFileDirectory)..\..\runtimes\win-$(VBAMPlatform)\nativeassets\native</VBAMBinPath>
+  </PropertyGroup>
+
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PreprocessorDefinitions>RETRO_IMPORT_SYMBOLS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)..\..\build\native\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  
+  <ItemDefinitionGroup>
+    <Link>
+      <AdditionalLibraryDirectories>$(VBAMBinPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>vbam_libretro.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  
+  <Choose>  
+    <When Condition="'$(TargetPlatformIdentifier)' == 'UAP'">
+      <ItemGroup Label="VBAMItemGroup">
+        <PackagingOutputs Include="$(VBAMBinPath)\vbam_libretro.dll">
+          <OutputGroup>VBAMBinaries</OutputGroup>
+          <ProjectName>$(ProjectName)</ProjectName>
+          <TargetPath>%(Filename)%(Extension)</TargetPath>
+        </PackagingOutputs>
+      </ItemGroup>
+    </When>
+    <When Condition="'$(TargetPlatformIdentifier)' != 'UAP'">
+      <ItemGroup Label="VBAMItemGroup">
+        <Content Include="$(VBAMBinPath)\*.dll">
+          <Link>%(FileName)%(Extension)</Link>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+      </ItemGroup>
+    </When>
+  </Choose>
+</Project>
