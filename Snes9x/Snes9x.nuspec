@@ -10,10 +10,10 @@
     <licenseUrl>https://github.com/libretro/snes9x/raw/master/docs/snes9x-license.txt</licenseUrl>
     <iconUrl>https://github.com/Aftnet/RetroCoresNuget/raw/master/Icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Libretro NES Emulator</description>
+    <description>Libretro SNES Emulator</description>
     <releaseNotes>Experimental nuget package</releaseNotes>
     <copyright>Copyright 2017</copyright>
-    <tags>Native Libretro NES core</tags>
+    <tags>Native Libretro SNES core</tags>
   </metadata>
   <files>
     <file src="uwp_arm\*.dll" target="runtimes\win10-arm\nativeassets\uap10.0" />
