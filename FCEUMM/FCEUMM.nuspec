@@ -13,7 +13,7 @@
     <description>Libretro NES Emulator</description>
     <releaseNotes>Experimental nuget package</releaseNotes>
     <copyright>Copyright 2017</copyright>
-    <tags>Native Libretro NES FCEUMM</tags>
+    <tags>Native Libretro NES core</tags>
   </metadata>
   <files>
     <file src="uwp_arm\*.dll" target="runtimes\win10-arm\nativeassets\uap10.0" />
@@ -28,7 +28,7 @@
     <file src="desktop_x86\*.dll" target="runtimes\win-x86\nativeassets\native" />
     <file src="desktop_x86\*.lib" target="runtimes\win-x86\nativeassets\native" />
     
-    <file src="include\*.h" target="build\native\include" />
+    <file src="..\Headers\*.h" target="build\native\include" />
     <file src="FCEUMM.targets" target="build\native\Aftnet.Experimental.FCEUMM.targets"/>
   </files>
 </package>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <FCEUMMPlatform Condition="'$(Platform)' == 'Win32'">x86</FCEUMMPlatform>
+    <FCEUMMPlatform Condition="'$(Platform)' != 'Win32'">$(Platform)</FCEUMMPlatform>
+    <FCEUMMBinPath Condition="'$(TargetPlatformIdentifier)' == 'UAP'">$(MSBuildThisFileDirectory)..\..\runtimes\win10-$(FCEUMMPlatform)\nativeassets\uap10.0</FCEUMMBinPath>
+    <FCEUMMBinPath Condition="'$(TargetPlatformIdentifier)' != 'UAP'">$(MSBuildThisFileDirectory)..\..\runtimes\win-$(FCEUMMPlatform)\nativeassets\native</FCEUMMBinPath>
+  </PropertyGroup>
+
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PreprocessorDefinitions>RETRO_IMPORT_SYMBOLS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)..\..\build\native\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  
+  <ItemDefinitionGroup>
+    <Link>
+      <AdditionalLibraryDirectories>$(FCEUMMBinPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>fceumm_libretro.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  
+  <Choose>  
+    <When Condition="'$(TargetPlatformIdentifier)' == 'UAP'">
+      <ItemGroup Label="FCEUMMItemGroup">
+        <PackagingOutputs Include="$(FCEUMMBinPath)\fceumm_libretro.dll">
+          <OutputGroup>FCEUMMBinaries</OutputGroup>
+          <ProjectName>$(ProjectName)</ProjectName>
+          <TargetPath>%(Filename)%(Extension)</TargetPath>
+        </PackagingOutputs>
+      </ItemGroup>
+    </When>
+    <When Condition="'$(TargetPlatformIdentifier)' != 'UAP'">
+      <ItemGroup Label="FCEUMMItemGroup">
+        <Content Include="$(FCEUMMBinPath)\*.dll">
+          <Link>%(FileName)%(Extension)</Link>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+      </ItemGroup>
+    </When>
+  </Choose>
+</Project>
