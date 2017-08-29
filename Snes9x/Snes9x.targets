@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <FCEUMMPlatform Condition="'$(Platform)' == 'Win32'">x86</FCEUMMPlatform>
-    <FCEUMMPlatform Condition="'$(Platform)' != 'Win32'">$(Platform)</FCEUMMPlatform>
-    <FCEUMMBinPath Condition="'$(TargetPlatformIdentifier)' == 'UAP'">$(MSBuildThisFileDirectory)..\..\runtimes\win10-$(FCEUMMPlatform)\nativeassets\uap10.0</FCEUMMBinPath>
-    <FCEUMMBinPath Condition="'$(TargetPlatformIdentifier)' != 'UAP'">$(MSBuildThisFileDirectory)..\..\runtimes\win-$(FCEUMMPlatform)\nativeassets\native</FCEUMMBinPath>
+    <Snes9xPlatform Condition="'$(Platform)' == 'Win32'">x86</Snes9xPlatform>
+    <Snes9xPlatform Condition="'$(Platform)' != 'Win32'">$(Platform)</Snes9xPlatform>
+    <Snes9xBinPath Condition="'$(TargetPlatformIdentifier)' == 'UAP'">$(MSBuildThisFileDirectory)..\..\runtimes\win10-$(Snes9xPlatform)\nativeassets\uap10.0</Snes9xBinPath>
+    <Snes9xBinPath Condition="'$(TargetPlatformIdentifier)' != 'UAP'">$(MSBuildThisFileDirectory)..\..\runtimes\win-$(Snes9xPlatform)\nativeassets\native</Snes9xBinPath>
   </PropertyGroup>
 
   <ItemDefinitionGroup>
@@ -16,24 +16,24 @@
   
   <ItemDefinitionGroup>
     <Link>
-      <AdditionalLibraryDirectories>$(FCEUMMBinPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>fceumm_libretro.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(Snes9xBinPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>snes9x_libretro.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   
   <Choose>  
     <When Condition="'$(TargetPlatformIdentifier)' == 'UAP'">
-      <ItemGroup Label="FCEUMMItemGroup">
-        <PackagingOutputs Include="$(FCEUMMBinPath)\fceumm_libretro.dll">
-          <OutputGroup>FCEUMMBinaries</OutputGroup>
+      <ItemGroup Label="Snes9xItemGroup">
+        <PackagingOutputs Include="$(Snes9xBinPath)\snes9x_libretro.dll">
+          <OutputGroup>Snes9xBinaries</OutputGroup>
           <ProjectName>$(ProjectName)</ProjectName>
           <TargetPath>%(Filename)%(Extension)</TargetPath>
         </PackagingOutputs>
       </ItemGroup>
     </When>
     <When Condition="'$(TargetPlatformIdentifier)' != 'UAP'">
-      <ItemGroup Label="FCEUMMItemGroup">
-        <Content Include="$(FCEUMMBinPath)\*.dll">
+      <ItemGroup Label="Snes9xItemGroup">
+        <Content Include="$(Snes9xBinPath)\*.dll">
           <Link>%(FileName)%(Extension)</Link>
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>

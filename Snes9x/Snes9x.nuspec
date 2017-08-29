@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <package>
   <metadata minClientVersion="3.5">
-    <id>Aftnet.Experimental.FCEUMM</id>
-    <title>FCEUMM Libretro</title>
+    <id>Aftnet.Experimental.Snes9x</id>
+    <title>Snes9x Libretro</title>
     <version>0.1.1</version>
     <authors>Libretro</authors>
     <owners>Libretro</owners>
-    <projectUrl>https://github.com/libretro/libretro-fceumm</projectUrl>
-    <licenseUrl>https://raw.githubusercontent.com/libretro/libretro-fceumm/master/Copying</licenseUrl>
+    <projectUrl>https://github.com/libretro/snes9x</projectUrl>
+    <licenseUrl>https://github.com/libretro/snes9x/raw/master/docs/snes9x-license.txt</licenseUrl>
     <iconUrl>https://github.com/Aftnet/RetroCoresNuget/raw/master/Icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Libretro NES Emulator</description>
@@ -29,6 +29,6 @@
     <file src="desktop_x86\*.lib" target="runtimes\win-x86\nativeassets\native" />
     
     <file src="..\Headers\*.h" target="build\native\include" />
-    <file src="FCEUMM.targets" target="build\native\Aftnet.Experimental.FCEUMM.targets"/>
+    <file src="Snes9x.targets" target="build\native\Aftnet.Experimental.Snes9x.targets"/>
   </files>
 </package>
