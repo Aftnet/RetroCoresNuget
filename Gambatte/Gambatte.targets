@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <FCEUMMPlatform Condition="'$(Platform)' == 'Win32'">x86</FCEUMMPlatform>
-    <FCEUMMPlatform Condition="'$(Platform)' != 'Win32'">$(Platform)</FCEUMMPlatform>
-    <FCEUMMBinPath Condition="'$(TargetPlatformIdentifier)' == 'UAP'">$(MSBuildThisFileDirectory)..\..\runtimes\win10-$(FCEUMMPlatform)\nativeassets\uap10.0</FCEUMMBinPath>
-    <FCEUMMBinPath Condition="'$(TargetPlatformIdentifier)' != 'UAP'">$(MSBuildThisFileDirectory)..\..\runtimes\win-$(FCEUMMPlatform)\nativeassets\native</FCEUMMBinPath>
+    <GambattePlatform Condition="'$(Platform)' == 'Win32'">x86</GambattePlatform>
+    <GambattePlatform Condition="'$(Platform)' != 'Win32'">$(Platform)</GambattePlatform>
+    <GambatteBinPath Condition="'$(TargetPlatformIdentifier)' == 'UAP'">$(MSBuildThisFileDirectory)..\..\runtimes\win10-$(GambattePlatform)\nativeassets\uap10.0</GambatteBinPath>
+    <GambatteBinPath Condition="'$(TargetPlatformIdentifier)' != 'UAP'">$(MSBuildThisFileDirectory)..\..\runtimes\win-$(GambattePlatform)\nativeassets\native</GambatteBinPath>
   </PropertyGroup>
 
   <ItemDefinitionGroup>
@@ -16,24 +16,24 @@
   
   <ItemDefinitionGroup>
     <Link>
-      <AdditionalLibraryDirectories>$(FCEUMMBinPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>fceumm_libretro.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(GambatteBinPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>gambatte_libretro.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   
   <Choose>  
     <When Condition="'$(TargetPlatformIdentifier)' == 'UAP'">
-      <ItemGroup Label="FCEUMMItemGroup">
-        <PackagingOutputs Include="$(FCEUMMBinPath)\fceumm_libretro.dll">
-          <OutputGroup>FCEUMMBinaries</OutputGroup>
+      <ItemGroup Label="GambatteItemGroup">
+        <PackagingOutputs Include="$(GambatteBinPath)\gambatte_libretro.dll">
+          <OutputGroup>GambatteBinaries</OutputGroup>
           <ProjectName>$(ProjectName)</ProjectName>
           <TargetPath>%(Filename)%(Extension)</TargetPath>
         </PackagingOutputs>
       </ItemGroup>
     </When>
     <When Condition="'$(TargetPlatformIdentifier)' != 'UAP'">
-      <ItemGroup Label="FCEUMMItemGroup">
-        <Content Include="$(FCEUMMBinPath)\*.dll">
+      <ItemGroup Label="GambatteItemGroup">
+        <Content Include="$(GambatteBinPath)\*.dll">
           <Link>%(FileName)%(Extension)</Link>
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
